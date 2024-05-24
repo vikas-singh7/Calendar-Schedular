@@ -1,0 +1,36 @@
+<div class="navigation-bar">
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">Scheduler</label>
+        <ul>
+            <li><a class="" aria-current="page" href="/">Home</a></li>
+            <li id="login-btn"><a href="/login">Login</a> </li>
+            <li id="signup-btn"><a href="/signup">SignUp</a> </li>
+            <li id="logout-btn"><button onclick="handleLogout(event)">Logout</button></li>
+        </ul>
+    </nav>
+
+</div>
+<script>
+    const handleLogout = (e) => {
+        e.preventDefault()
+        localStorage.removeItem('token')
+        location.replace('/')
+    }
+    const logoutBtn = document.getElementById('logout-btn')
+    const loginBtn = document.getElementById('login-btn')
+    const signupBtn = document.getElementById('signup-btn')
+    if (localStorage.getItem('token')) {
+        logoutBtn.innerHTML = `<button onclick="handleLogout(event)">Logout</button>`
+        loginBtn.innerHTML = ""
+        signupBtn.innerHTML = ""
+
+    } else {
+        logoutBtn.innerHTML = ""
+        loginBtn.innerHTML = `<a href="/login">Login</a> `
+        signupBtn.innerHTML = `<a href="/signup">SignUp</a>`
+    }
+</script>

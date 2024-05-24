@@ -1,0 +1,30 @@
+<%- include('partials/header') -%>
+
+<%- include('partials/adminnavbar') -%>
+    <div class="table-report">
+        <style>
+            table,th,td{
+                border:1px solid black;
+            }
+        </style>
+        <table>
+            <th>Subject</th>
+            <th>Subject Code</th>
+            <th>Faculty</th>
+            <th>Faculty Code</th>
+            <th>Assigned Lectures</th>
+            <th>Count Of Lectures</th>
+            <% subjects.forEach(sub=>{ %> 
+            <tr>
+                <td><%= sub.name%></td>
+                <td><%= sub.subjectCode%></td>
+                <td><%= sub.teacherName%></td>
+                <td><%= sub.teacherCode%></td>
+                <td><%= sub.assignedcount%></td>
+                <td><%= sub.count%></td>
+            </tr>
+            <% }) %> 
+        </table>
+    </div>
+
+<%- include('partials/footer') -%>

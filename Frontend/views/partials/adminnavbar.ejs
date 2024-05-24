@@ -1,0 +1,23 @@
+<div class="navigation-bar">
+    <nav>
+        
+        <label class="logo">Admin DashBoard</label>
+        <ul>
+            <li><a class="" aria-current="page" href="/">Home</a></li>
+            <li><a class="" href="/assignroles">Assign Roles</a></li>
+            <li><a class="" href="/report">View Reports</a></li>
+            <li><a class="" href="/branch">Add Branhces</a></li>
+            <li><a class="" href="/timetableformadmin">Add Subjects</a></li>
+            <li><a class="" href="/teacher">Add Faculty</a></li>
+            <li><a class="" href="/timetableformadmin">Timetable</a></li>                 
+            <li><button onclick="handleLogout(event)">Logout</button></li>
+        </ul>
+    </nav>
+</div>
+<script>
+    const handleLogout = (e)=>{
+        e.preventDefault()
+        localStorage.removeItem('token')
+        location.replace('/')
+    }
+</script>

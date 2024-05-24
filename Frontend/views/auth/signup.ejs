@@ -1,0 +1,44 @@
+<%- include('../partials/header') -%>
+
+<%- include('../partials/navbar') -%>
+
+
+<form onsubmit="handleSubmit(event)">
+    <div class="box item">
+    <label for="email">Email : </label>
+    <input type="text" id="email">
+    </div>
+    <div class="box item">
+    <label for="pwd">Password : </label>
+    <input type="password" id="password">
+    </div>
+    <div class="sub-button">
+    <button type="submit">SignUp</button>
+    </div>
+</form>
+<script>
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const email = document.getElementById("email").value
+        console.log(email);
+        const password = document.getElementById("password").value
+        const data = {email,password}
+        fetch("http://localhost:3000/api/auth/createuser", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body : JSON.stringify(data)
+        })
+        .then(d => d.json())
+        .then(resp =>{
+            localStorage.setItem("token" ,resp.authToken)
+            location.replace('/')
+        })
+        .catch(err=>{
+            //render error page
+        })
+    }
+</script>
+
+<%- include('../partials/footer') -%>
